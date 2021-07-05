@@ -1,6 +1,7 @@
-require_relative 'price_helper'
+require_relative 'lib/helpers/price_helper'
+require_relative 'lib/entities/order'
 
-order = [100.0, 112.2, 301.1]
+order_items = [100.0, 112.2, 301.1]
 discounts = [10.0, 0, 0]
-total_sum = order.zip(discounts).sum { |item| PriceHelper.new(*item).item_price }
-puts "Total Sum: #{total_sum}"
+order = Order.new(order_items, discounts)
+puts "Total Sum: #{order.total_price}"
